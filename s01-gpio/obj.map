@@ -1,0 +1,109 @@
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 main.o
+ .data          0x0000000000000000        0x0 main.o
+ .bss           0x0000000000000000        0x0 main.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0000000000000000 0x0000000000001000 xr
+RAM              0x0000000010000000 0x0000000000000400 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD main.o
+START GROUP
+LOAD /Users/fukuno/bin/gcc-arm-none-eabi-7-2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v6-m/libgcc.a
+LOAD /Users/fukuno/bin/gcc-arm-none-eabi-7-2018-q2-update/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/libc.a
+END GROUP
+                0x0000000010000400                __top_ram = 0x10000400
+
+.text           0x0000000000000000      0x15c
+                0x0000000000000000                _text = .
+ *(.isr_vector)
+ .isr_vector    0x0000000000000000       0xc0 main.o
+                0x0000000000000000                g_pfnVectors
+                0x00000000000000c0                __data_section_table = .
+ *(.after_vectors)
+ .after_vectors
+                0x00000000000000c0        0x2 main.o
+                0x00000000000000c0                SPI0_IRQHandler
+                0x00000000000000c0                PININT7_IRQHandler
+                0x00000000000000c0                HardFault_Handler
+                0x00000000000000c0                WKT_IRQHandler
+                0x00000000000000c0                PININT2_IRQHandler
+                0x00000000000000c0                SysTick_Handler
+                0x00000000000000c0                PININT1_IRQHandler
+                0x00000000000000c0                PendSV_Handler
+                0x00000000000000c0                NMI_Handler
+                0x00000000000000c0                MRT_IRQHandler
+                0x00000000000000c0                UART1_IRQHandler
+                0x00000000000000c0                UART0_IRQHandler
+                0x00000000000000c0                SPI1_IRQHandler
+                0x00000000000000c0                IntDefaultHandler
+                0x00000000000000c0                PININT3_IRQHandler
+                0x00000000000000c0                UART2_IRQHandler
+                0x00000000000000c0                PININT5_IRQHandler
+                0x00000000000000c0                PININT4_IRQHandler
+                0x00000000000000c0                PININT0_IRQHandler
+                0x00000000000000c0                BOD_IRQHandler
+                0x00000000000000c0                SCT_IRQHandler
+                0x00000000000000c0                I2C_IRQHandler
+                0x00000000000000c0                WDT_IRQHandler
+                0x00000000000000c0                SVC_Handler
+                0x00000000000000c0                PININT6_IRQHandler
+                0x00000000000000c0                CMP_IRQHandler
+ *(.text*)
+ *fill*         0x00000000000000c2        0x2 
+ .text.Reset_Handler
+                0x00000000000000c4       0x98 main.o
+                0x00000000000000c4                Reset_Handler
+ *(.rodata*)
+                0x000000000000015c                _etext = .
+
+.glue_7         0x000000000000015c        0x0
+ .glue_7        0x000000000000015c        0x0 linker stubs
+
+.glue_7t        0x000000000000015c        0x0
+ .glue_7t       0x000000000000015c        0x0 linker stubs
+
+.vfp11_veneer   0x000000000000015c        0x0
+ .vfp11_veneer  0x000000000000015c        0x0 linker stubs
+
+.v4_bx          0x000000000000015c        0x0
+ .v4_bx         0x000000000000015c        0x0 linker stubs
+
+.iplt           0x000000000000015c        0x0
+ .iplt          0x000000000000015c        0x0 main.o
+
+.rel.dyn        0x000000000000015c        0x0
+ .rel.iplt      0x000000000000015c        0x0 main.o
+
+.data           0x0000000010000000        0x0 load address 0x000000000000015c
+                0x0000000010000000                _data = .
+ *(vtable)
+ *(.data*)
+                0x0000000010000000                _edata = .
+
+.igot.plt       0x0000000010000000        0x0
+ .igot.plt      0x0000000010000000        0x0 main.o
+
+.bss            0x0000000010000000        0x0
+                0x0000000010000000                _bss = .
+ *(.bss*)
+ *(COMMON)
+                0x0000000010000000                _ebss = .
+                0x0000000010000400                PROVIDE (_vStackTop = __top_ram)
+OUTPUT(obj.axf elf32-littlearm)
+
+.comment        0x0000000000000000       0x7f
+ .comment       0x0000000000000000       0x7f main.o
+                                         0x80 (size before relaxing)
+
+.ARM.attributes
+                0x0000000000000000       0x32
+ .ARM.attributes
+                0x0000000000000000       0x32 main.o
